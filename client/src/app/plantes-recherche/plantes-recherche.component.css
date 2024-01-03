@@ -1,0 +1,70 @@
+body{
+  background-color: lightgreen;
+  height: 100%;
+}
+.container {
+    padding-top: 50px;
+    padding-bottom: 10px;
+    color: #405065;
+  }
+  
+  .search-hero {
+    max-width: 500px;
+    padding-bottom: 50px;
+    margin:auto;
+    display: flex;
+    flex-direction: row;
+  }
+  button {
+    height: 40px;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  button:hover {
+    background: #0b7dda;
+  }
+  .form-control {
+    box-shadow: 0 10px 40px 0 #B0C1D9;
+    border-radius: 10px;
+  }
+  .form-control::placeholder  {
+    font-family: sans-serif;
+  }
+  .plante {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    height: 110%;
+    border-radius: 10px;
+    background-image: url("https://images.unsplash.com/photo-1533563906091-fdfdffc3e3c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFyayUyMHBsYW50fGVufDB8fDB8fA%3D%3D&w=1000&q=80");
+  }
+  h2,h5 {
+    color: white;
+}
+h1{
+    text-align: center;
+}
+ul,#plante-name {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  justify-content: space-around;
+  color: white;
+}
+#plantes{
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  height: 110%;
+  width: 60%;
+  border-radius: 10px;
+  background-image: url("http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/0c798ef36649f8c.png");
+}

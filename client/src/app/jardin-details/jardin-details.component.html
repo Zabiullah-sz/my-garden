@@ -1,0 +1,93 @@
+<body>
+  <div class="jardin">
+    <h1>
+      {{ jardinNom }}
+    </h1>
+    <div class="container">
+      <div *ngFor="let parcelle of parcelles; index as i" class="parcelle">
+        <h2>Parcelle No {{ i + 1 }}</h2>
+        <ul class="attributes-container">
+          <li>Dimensions: {{ parcelle.dimensions }} m<sup>2</sup></li>
+          <li>Longitude: {{ parcelle.longitude }}</li>
+          <li>Latitude: {{ parcelle.latitude }}</li>
+        </ul>
+        <h5>Rangs:</h5>
+        <div *ngFor="let rang of parcelle.rangs" class="rang">
+          <h2>Rang No {{ rang.id }}</h2>
+          <ul>
+            <li>Longitude: {{ rang.longitude }}</li>
+            <li>Latitude: {{ rang.latitude }}</li>
+            <li *ngIf="rang.estEnJachere">
+              Ce rang est en jachére depuis le
+              {{ rang.dateMiseEnJachere.slice(0, 10) }}
+            </li>
+          </ul>
+          <div *ngIf="!rang.estEnJachere" class="container">
+            <div class="row">
+              <div class="col-md-12 titre">
+                <h2><strong>Variété plantée: </strong>{{ rang.varietePlante.nom }}</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label class="enonce"
+                  ><strong> année mise en marché: </strong>
+                  {{ rang.varietePlante.anneeMiseEnMarche.substring(0, 10) }}
+                </label>
+              </div>
+              <div class="col">
+                <label class="enonce"
+                  ><strong>Semis: </strong>{{ rang.varietePlante.semis }}</label
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label class="enonce"
+                  ><strong>Période de mise en place: </strong>
+                  {{ rang.varietePlante.periodeMiseEnPlace.substring(0, 10) }}
+                </label>
+              </div>
+              <div class="col">
+                <label class="enonce"
+                  ><strong>Période de récolte: </strong
+                  >{{ rang.varietePlante.plantation }}</label
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label class="enonce"
+                  ><strong>Entretien: </strong
+                  >{{ rang.varietePlante.entretien }}</label
+                >
+              </div>
+              <div class="col">
+                <label class="enonce"
+                  ><strong>Récolte: </strong
+                  >{{ rang.varietePlante.recolte }}</label
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label class="enonce"
+                  ><strong>Période de récolte: </strong
+                  >{{
+                    rang.varietePlante.periodeRecolte.substring(0, 10)
+                  }}</label
+                >
+              </div>
+              <div class="col">
+                <label class="enonce"
+                  ><strong>Commentaire: </strong
+                  >{{ rang.varietePlante.commentaireGeneral }}</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

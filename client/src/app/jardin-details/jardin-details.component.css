@@ -1,0 +1,125 @@
+
+.parcelle {
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  height: 110%;
+  border-radius: 10px;
+  background-image: url("https://media.istockphoto.com/photos/black-soil-texture-background-top-view-picture-id619088574?k=20&m=619088574&s=170667a&w=0&h=YB58I0br4x1O2Xk61IAlUNcFqP3dU5KfLnlSS_zEtdI=");
+}
+.rang {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    height: 110%;
+    border-radius: 10px;
+    background-image: url("http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/0c798ef36649f8c.png");
+  }
+  .jardin {
+    margin: 10px;
+    text-align: center;
+    height: 110%;
+    border-radius: 10px;
+    background-color: lightgreen;
+}
+
+.wrapper {
+  display: grid;
+  grid-auto-rows: 200px;
+}
+
+.enonce {
+  width: fit-content;
+  height: auto;
+  padding: 6px;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  background: rgba(192, 123, 247, 0.81);
+  border-radius: 7px;
+}
+
+.bottom-section{
+  margin-top: 7% !important;
+
+}
+
+.rang{
+  color: black !important;
+}
+
+a{
+  color: black !important;
+}
+
+.titre{
+  margin-bottom: 4%;
+  font-family: cursive;
+  text-align: center;
+}
+
+.bio-image {
+  margin-top: -104px;
+  margin-right: 20px;
+}
+.container {
+  padding: 10px;
+  height: 110%;
+  border-radius: 10px;
+  background-image: url("https://i.pinimg.com/originals/f2/68/d4/f268d454047b09768548c34089adccc3.jpg");
+  margin: auto;
+  margin-top: 40px;
+}
+.jardin {
+  margin: 10px;
+  text-align: center;
+  height: 110%;
+  border-radius: 10px;
+  background-color: lightgreen;
+}
+.attributes-container,
+h2 {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+h2,
+h5,li {
+  color: white;
+  display: inline;
+}
+h1 {
+  text-align: center;
+}
+a {
+  color: whitesmoke;
+  display: inline;
+  float: center;
+}
+.btn {
+  background-color: var(--theme-purple);
+  font-size: 20px;
+  color: white;
+  box-shadow: 2px 2px 5px grey;
+  font-family: "Roboto", sans-serif;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.btn2 {
+  background-color: yellowgreen;
+  font-size: 20px;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid black;
+  box-shadow: 2px 2px 5px grey;
+  font-family: "Roboto", sans-serif;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

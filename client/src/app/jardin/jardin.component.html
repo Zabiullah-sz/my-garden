@@ -1,0 +1,24 @@
+<div class="container">
+  <div
+    *ngFor="let jardin of jardins"
+    class="jardin"
+  >
+  <a [routerLink]="['/jardins',jardin.id]">
+    <h2>{{ jardin.name }}</h2>
+    <div class="attributes-container">
+      <h5 class="row">Description:</h5>
+      <ul>
+      <li class="column">Surface: {{ jardin.surface }} m<sup>2</sup></li>
+      <li *ngIf="jardin.potagerFlag" class="column">Type de sol: {{ jardin.typeDeSol }}</li>
+      <li *ngIf="jardin.vergerFlag" class="column">hauteur maximale: {{ jardin.hauteurMaximale }}</li>
+    </ul>
+      <h5 class="row">Type:</h5>
+      <ul>
+      <li *ngIf="jardin.potagerFlag" class="column">Potager</li>
+      <li *ngIf="jardin.vergerFlag" class="column">Verger</li>
+      <li *ngIf="jardin.ornementFlag" class="column">Ornement</li>
+    </ul>
+    </div>
+  </a>
+  </div>
+</div>

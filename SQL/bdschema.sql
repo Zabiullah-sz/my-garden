@@ -1,0 +1,132 @@
+DROP SCHEMA IF EXISTS PLANTESDB CASCADE;
+CREATE SCHEMA IF NOT EXISTS PLANTESDB;
+
+SET search_path = PLANTESDB;
+
+CREATE TABLE IF NOT EXISTS Jardin( 
+	jardinId SERIAL PRIMARY KEY,
+	jardinName VARCHAR(30) NOT NULL,
+	surface NUMERIC(8,2) NOT NULL);
+
+
+CREATE TABLE IF NOT EXISTS JardinDetails(
+    jardinId INTEGER NOT NULL,
+	typeDeSol VARCHAR(20),
+	hauteurMaximale NUMERIC(8,2),
+	ornementFlag BOOLEAN NOT NULL,
+	potagerFlag BOOLEAN NOT NULL,
+	vergerFlag BOOLEAN NOT NULL,
+	PRIMARY KEY(jardinId),
+	FOREIGN KEY(jardinId) REFERENCES Jardin(jardinId)
+	ON UPDATE CASCADE ON DELETE CASCADE);
+	
+CREATE TABLE IF NOT EXISTS Parcelle  (
+	parcelleId SERIAL,
+	jardinId INTEGER NOT NULL, 
+	longitude NUMERIC(8,2)NOT NULL,
+	latitude NUMERIC(8,2)NOT NULL,
+	dimensions NUMERIC(8,2)NOT NULL,
+	PRIMARY KEY(parcelleId,jardinId),
+	FOREIGN KEY (jardinId) REFERENCES Jardin(jardinId)
+	ON UPDATE CASCADE ON DELETE CASCADE); 
+
+CREATE TABLE IF NOT EXISTS Rang  (
+	rangId SERIAL,
+	parcelleId INTEGER NOT NULL,
+	jardinId INTEGER NOT NULL,  
+	estEnJachere BOOLEAN NOT NULL,
+	dateMiseEnJachere DATE,
+	longitudeRang NUMERIC(8,2) NOT NULL,
+	latitudeRang NUMERIC(8,2) NOT NULL,
+	PRIMARY KEY(jardinId,parcelleId,rangId),
+	FOREIGN KEY (parcelleId,jardinId) REFERENCES Parcelle(parcelleId,jardinId)
+	ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT dateMiseEnJachere CHECK (dateMiseEnJachere - current_date < 365));
+	
+CREATE TABLE IF NOT EXISTS Variete (
+	varieteId SERIAL PRIMARY KEY,
+	varieteNom VARCHAR(50) NOT NULL,
+	anneeMiseEnMarchée DATE NOT NULL,
+	semis VARCHAR(200) NOT NULL,
+	plantation VARCHAR(200) NOT NULL,
+	entretien VARCHAR(200) NOT NULL,
+	recolte VARCHAR(200) NOT NULL,
+	periodeMiseEnPlace DATE NOT NULL,
+	periodeRecolte DATE NOT NULL,
+	commentaireGeneral VARCHAR(200));
+
+
+CREATE TABLE IF NOT EXISTS Plante(
+	idVariete INTEGER NOT NULL,
+	nomLatin VARCHAR(50) UNIQUE NOT NULL,
+	planteNom VARCHAR(50) NOT NULL,
+	catégorie VARCHAR(20) NOT NULL,
+	planteType VARCHAR(20) NOT NULL,
+	sousType VARCHAR(30) NOT NULL,
+	PRIMARY KEY (nomLatin),
+	FOREIGN KEY(idVariete) REFERENCES Variete(varieteId)
+	ON DELETE CASCADE ON UPDATE CASCADE);
+	
+CREATE TABLE IF NOT EXISTS AssociationPlantes (
+	nomLatinP1 VARCHAR(20) NOT NULL,
+	nomLatinP2 VARCHAR(20) NOT NULL, 
+	description VARCHAR(100) NOT NULL, 
+	estBenefice BOOLEAN NOT NULL,
+	PRIMARY KEY (nomLatinP1,nomLatinP2),
+	FOREIGN KEY (nomLatinP1) REFERENCES Plante(nomlatin) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (nomLatinP2) REFERENCES Plante(nomlatin)
+	ON DELETE CASCADE ON UPDATE CASCADE);
+
+CREATE TABLE IF NOT EXISTS Menace (
+	menaceId SERIAL PRIMARY KEY, 
+	nomLatinPlante VARCHAR(50) NOT NULL,
+	description VARCHAR(100) NOT NULL, 
+	FOREIGN KEY (nomLatinPlante) REFERENCES Plante(nomLatin) ON DELETE CASCADE ON UPDATE CASCADE);
+	
+CREATE TABLE IF NOT EXISTS Solution (
+	solutionId SERIAL PRIMARY KEY, 
+	menaceId INTEGER NOT NULL,
+	description VARCHAR(100) NOT NULL, 
+	FOREIGN KEY (menaceId) REFERENCES menace(menaceId) ON DELETE CASCADE ON UPDATE CASCADE);
+	
+
+CREATE TABLE IF NOT EXISTS Semencier (
+	semencierId SERIAL PRIMARY KEY,
+	semencierNom VARCHAR(20) NOT NULL,
+	siteWeb VARCHAR(20) NOT NULL);
+
+CREATE TABLE IF NOT EXISTS ProductionVariete (
+	idProduction SERIAL,
+	semencierId INTEGER NOT NULL,
+	varieteId INTEGER NOT NULL, 
+	estBiologique BOOLEAN NOT NULL, 
+	PRIMARY KEY(idProduction), 
+	FOREIGN KEY (semencierId) REFERENCES Semencier(semencierId) ON DELETE SET NULL ON UPDATE CASCADE,
+	FOREIGN KEY (varieteId) REFERENCES Variete(varieteId)
+	ON DELETE CASCADE ON UPDATE CASCADE);
+	
+CREATE TABLE IF NOT EXISTS Sol (
+	solId SERIAL PRIMARY KEY,
+	solType VARCHAR(20));
+	
+	
+CREATE TABLE IF NOT EXISTS SolsVariete (
+	varieteId INTEGER NOT NULL,
+	solId INTEGER NOT NULL,  
+	PRIMARY KEY(varieteId, solId), 
+	FOREIGN KEY (solId) REFERENCES Sol(solId) ON DELETE SET NULL ON UPDATE CASCADE,
+	FOREIGN KEY (varieteId) REFERENCES Variete(varieteId)
+	ON DELETE CASCADE ON UPDATE CASCADE);
+	
+CREATE TABLE IF NOT EXISTS CultiverPlante (
+	nomLatin VARCHAR(50) NOT NULL, 
+	jardinId INTEGER NOT NULL,
+	parcelleId INTEGER NOT NULL,
+	rangId INTEGER NOT NULL,
+	typeMiseEnPlace VARCHAR(20),
+	idProduction INTEGER NOT NULL,
+	PRIMARY KEY(nomLatin, jardinId, parcelleId, rangId),
+	FOREIGN KEY (nomLatin) REFERENCES Plante(nomLatin) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (idProduction) REFERENCES ProductionVariete(idProduction) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (jardinId,parcelleId,rangId) REFERENCES Rang(jardinId,parcelleId,rangId)
+	ON DELETE SET NULL ON UPDATE CASCADE);

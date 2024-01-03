@@ -1,0 +1,61 @@
+<body>
+  <button type="button" class="btn" routerLink="/ajouter-variete">Ajouter une varieté&#10140;</button>
+  <div *ngFor="let variete of varietes; index as i" class="container">
+    <div class="row">
+      <div class="col-md-12 titre">
+        <h2>{{ variete.nom }}</h2>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col">
+      <label class="enonce"><strong>
+        année mise en marché: </strong>
+        {{ variete.anneeMiseEnMarche.substring(0,10) }}
+      </label></div>
+      <div class="col">
+        <label class="enonce"><strong>Semis: </strong>{{ variete.semis }}</label></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class="enonce"><strong>Période de mise en place: </strong> {{ variete.periodeMiseEnPlace.substring(0,10) }}
+        </label></div>
+      <div class="col"><label class="enonce"><strong>Période de récolte: </strong>{{ variete.plantation }}</label></div>
+    </div>
+    <div class="row">
+      <div class="col"><label class="enonce"><strong>Entretien: </strong>{{ variete.entretien }}</label></div>
+      <div class="col"><label class="enonce"><strong>Récolte: </strong>{{ variete.recolte }}</label></div>
+    </div>
+    <div class="row">
+      <div class="col"><label class="enonce"><strong>Période de récolte: </strong>{{ variete.periodeRecolte.substring(0,10) }}</label></div>
+      <div class="col"><label class="enonce"><strong>Commentaire: </strong>{{ variete.commentaireGeneral }}</label></div>
+    </div>
+
+    <div class="row" >
+      <div class="col">
+    <label class="enonce"><strong>Est adapté aux sols de type: </strong><label *ngFor="let sol of variete.solsAdaptes; index as i">{{ sol.type }} ,</label></label>
+  </div>
+  <div class="col"><label class="enonce"><strong>Semencier: </strong> la variété est produite par <a [href]="variete.semencier.siteWeb">{{ variete.semencier.nom }}</a>,
+     consultez le site web <a [href]="variete.semencier.siteWeb">{{ variete.semencier.siteWeb }}
+  </a>pour plus de détails
+</label></div>
+
+
+  </div>
+    <div class="row bottom-section">
+        <div class="col col-md-6"><input  (click)="onSelect(variete.id,variete.estBiologique)"  class="btn2" type="button" value="Modifier"></div>
+        <div class="col"><input (click)="supprimerVariete(variete.id,variete.semencier.id,variete.estBiologique)" class="btn2"  type="button" value="Supprimer"></div>
+        <img
+        *ngIf="variete.estBiologique"
+            class="rounded-circle bio-image"
+            width="150px"
+            src="https://bit.ly/38462fC"
+          />
+    </div>
+      </div>
+      <div *ngIf="deleteLaunch" class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <div class="text"><strong>La variété a été supprimé avec succés</strong></div>
+      </div>
+</body>
+

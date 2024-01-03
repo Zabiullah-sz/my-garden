@@ -1,0 +1,48 @@
+body {
+    background-color: #e2e2e2;
+}
+
+.wrapper {
+    display: grid;
+    grid-auto-rows: 200px;
+}
+
+.jardin {
+    margin: 10px;
+    text-align: center;
+    height: 110%;
+    border-radius: 10px;
+    background-image: url('http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/6a68c9aee6a3655.png');
+}
+
+
+.column {
+    float: left;
+    width: 33.33%;
+    text-align: justify;
+    text-indent: 25%;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+  }
+  a {
+      text-decoration: none;
+      color: black;
+  }
+  .row {
+      font-weight: bold;
+      text-indent: 20px;
+      margin-top: 2%;
+      margin-bottom: 0.1%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  ul {
+      display: flex;
+      flex-direction: row;
+      list-style-type:none;
+  }

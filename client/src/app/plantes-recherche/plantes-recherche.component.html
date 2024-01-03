@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+<div class="container text-center">
+  <h1>{{title}}</h1>
+  <p>Note: La liste de noms de plantes sera affiché dans l'autocomplétion</p>
+</div>
+<div class="search-hero">
+  <input class="form-control" type="text" list="browsers" name="search" [(ngModel)]="searchText" placeholder=" Écrivez le nom ou une partie du nom d'une plante" (keydown.enter)="this.searchText.trim() && this.getPlantes()">
+    <datalist id="browsers">
+      <option *ngFor="let planteNom of plantesNoms" [value]="planteNom">
+    </datalist>
+  <button id="button-search" (click)="this.searchText.trim() && this.getPlantes()" ><i class="fa fa-search"></i></button>
+</div>
+<h5 *ngIf="this.rechercheEnvoi && this.plantes.length === 0" id="plantes">Aucune plante n'a été trouvée avec ce parametre de recherche: {{searchText}}</h5>
+<div *ngIf="this.plantes.length !== 0" id="plantes">
+<h4>Plantes </h4>
+<div *ngFor="let plante of plantes" class="plante">
+  <div id="plante-name">
+  <h2>Nom: {{ plante.nom }}</h2>
+  <h2>Nom latin: {{ plante.nomLatin }}</h2>
+</div>
+  <h2 >{{plante.nom}} fait partie de la variété {{ plante.nomVariete }}</h2>
+  <ul>
+    <li><h4>Catégorie: {{ plante.categorie }}</h4></li>
+    <li><h4>Type: {{ plante.type }}</h4></li>
+    <li><h4>Sous-type: {{ plante.sousType }}</h4></li>
+  </ul>
+</div>
+</div>
+  
+</body>

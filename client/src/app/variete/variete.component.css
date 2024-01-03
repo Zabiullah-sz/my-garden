@@ -1,0 +1,123 @@
+.wrapper {
+  display: grid;
+  grid-auto-rows: 200px;
+}
+
+.enonce {
+  width: fit-content;
+  height: auto;
+  padding: 6px;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  background: rgba(192, 123, 247, 0.81);
+  border-radius: 7px;
+}
+
+.bottom-section{
+  margin-top: 7% !important;
+
+}
+
+.rang{
+  color: black !important;
+}
+
+a{
+  color: black !important;
+}
+
+.titre{
+  margin-bottom: 4%;
+  font-family: cursive;
+  text-align: center;
+}
+
+.bio-image {
+  margin-top: -104px;
+  margin-right: 20px;
+}
+.container {
+  padding: 10px;
+  height: 110%;
+  border-radius: 10px;
+  background-image: url("http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/0c798ef36649f8c.png");
+  margin: auto;
+  margin-top: 40px;
+}
+.jardin {
+  margin: 10px;
+  text-align: center;
+  height: 110%;
+  border-radius: 10px;
+  background-color: lightgreen;
+}
+.attributes-container,
+h2 {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+h2,
+h5 {
+  color: white;
+  display: inline;
+}
+h1 {
+  text-align: center;
+}
+a {
+  color: whitesmoke;
+  display: inline;
+  float: center;
+}
+.btn {
+  background-color: var(--theme-purple);
+  font-size: 20px;
+  color: white;
+  box-shadow: 2px 2px 5px grey;
+  font-family: "Roboto", sans-serif;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.btn2 {
+  background-color: yellowgreen;
+  font-size: 20px;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid black;
+  box-shadow: 2px 2px 5px grey;
+  font-family: "Roboto", sans-serif;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.alert {
+  position: fixed;
+  top: 90%;  
+  padding: 20px;
+  background-color: red;
+  color: white;
+  margin-left: 2%;
+}
+
+.text{
+  margin-right: 0%;
+  padding-right: 90px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}

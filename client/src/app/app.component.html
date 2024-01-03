@@ -1,0 +1,25 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand title" href="/">INF3710 - TP4</a>
+  <div class="navbar-expand mr-auto">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" routerLink="/jardins">Jardins</a>
+      <a class="nav-item nav-link active" routerLink="/varietes">Varietés</a>
+      <a class="nav-item nav-link active" routerLink="/ajouter-variete">Ajouter varieté</a>
+      <a class="nav-item nav-link active" routerLink="/plantes">Plantes</a>
+    </div>
+  </div>
+</nav>
+
+<div class="home" *ngIf="route == ''">
+  <p>
+    Bienvenue<br />à<br /><span class="hotel1">🌱🌿🍂jardins</span
+    ><span class="hotel2">jardins</span><span class="hotel3">jardins🌳🌱🌼</span>
+  </p>
+  <div id="accueil">
+    <div><button type="button" class="btn" routerLink="/jardins">Nos Jardins&#10140;</button></div>
+    <div><button type="button" class="btn" routerLink="/varietes">Nos Varietés&#10140;</button></div>
+    <div><button type="button" class="btn" routerLink="/plantes">Rechercher une de nos plantes&#10140;</button></div>
+</div>
+</div>
+
+<router-outlet></router-outlet>
